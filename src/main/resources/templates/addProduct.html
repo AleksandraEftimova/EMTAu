@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Product</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+            integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+            crossorigin="anonymous"></script>
+
+
+</head>
+<th:block>
+    <body>
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">WEB PROGRAMMING SHOP</h1>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <form action="/products/add" method="post">
+                    <input id="id" type="hidden" name="id" th:value="(${product} != null ? ${product.getId()} : '')">
+                    <!-- Za ime -->
+                    <div class="form-group">
+                        <label for="name">Product name</label>
+                        <input type="text"
+                               class="form-control"
+                               id="name" name="name"
+                               th:value="(${product} != null ? ${product.getName()} : '')"
+                               required
+                               placeholder="Enter product name">
+                    </div>
+                    <!-- Za cena -->
+                    <div class="form-group">
+                        <label for="price">Price name</label>
+                        <input type="text"
+                               class="form-control"
+                               id="price" name="price"
+                               th:value="(${product} != null ? ${product.getPrice()} : '')"
+                               required
+                               placeholder="Enter price">
+                    </div>
+                    <!-- Za quantity -->
+                    <div class="form-group">
+                        <label for="quantity">Product quantity</label>
+                        <input type="text"
+                               class="form-control"
+                               id="quantity" name="quantity"
+                               th:value="(${product} != null ? ${product.getQuantity()} : '')"
+                               required
+                               placeholder="Enter product quantity">
+                    </div>
+
+                    <!-- Select category -->
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select name="category" class="form-control">
+                            <!-- Treba da iterirame-->
+                            <!-- Za sekoja kategorija prikazi ime i daj vrednost id pri klik -->
+                            <!-- pri edit proveri dali go ima produktot i prikazi ja taa ista kategorija -->
+                            <!-- t.e. selektiraj go onoj sto ima ista kategorija so id so toa na onaa kade sto sme-->
+                            <option th:if="${product} != null"
+                                    th:selected="${product.getCategory() != null
+                                    && product.getCategory().getId() == category.getId()}"
+                                    th:each="category : ${categories}"
+                                    th:text="${category.getName()}"
+                                    th:value="${category.getId()}">
+                            </option>
+                            <!-- Koga dodavame produkt -->
+                            <option th:if="${product} == null"
+                                    th:each="category : ${categories}"
+                                    th:text="${category.getName()}"
+                                    th:value="${category.getId()}">
+                            </option>
+                        </select>
+                    </div>
+
+                    <!-- Select manufacturer -->
+                    <div class="form-group">
+                        <label>Manufacturer</label>
+                        <select name="manufacturer" class="form-control">
+                            <option th:if="${product} != null"
+                                    th:selected="${product.getManufacturer() != null
+                                    && product.getManufacturer().getId() == man.getId()}"
+                                    th:each="man : ${manufacturers}"
+                                    th:text="${man.getName()}"
+                                    th:value="${man.getId()}">
+                            </option>
+                            <!-- Koga dodavame manufacturer -->
+                            <option th:if="${product} == null"
+                                    th:each="man : ${manufacturers}"
+                                    th:text="${man.getName()}"
+                                    th:value="${man.getId()}">
+                            </option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a type="button" class="btn btn-primary" href="/products">Back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    </body>
+</th:block>
+</html>

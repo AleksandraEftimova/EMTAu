@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<th:block>
+    <div class="container">
+        <h1 th:if="${hasError}" th:text="${error}"></h1>
+    </div>
+    <div class="container">
+        <form class="form-signin mt-xl-5" method="post" action="/register">
+            <h2 class="form-signin-heading">Register</h2>
+            <p>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username"/><br/>
+            </p>
+            <p>
+                <label for="password">Password:</label>
+                <input type="text" id="password" name="password"/><br/><br/>
+            </p>
+            <p>
+                <label for="repeatedPassword">Repeat Password:</label>
+                <input type="text" id="repeatedPassword" name="repeatedPassword"/><br/>
+            </p>
+            <p>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name"/><br/><br/>
+            </p>
+            <p>
+                <label for="surname">Surname:</label>
+                <input type="text" id="surname" name="surname"/><br/><br/>
+            </p>
+            <!--pole za biranje Role-->
+            <p>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" name="role" type="radio" id="ROLE_ADMIN" value="ROLE_ADMIN">
+                    <label class="form-check-label" for="ROLE_ADMIN">ROLE_ADMIN</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" name="role" type="radio" id="ROLE_USER" value="ROLE_USER">
+                    <label class="form-check-label" for="ROLE_USER">ROLE_USER</label>
+                </div>
+            </p>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+        </form>
+        <a href="/login" class="btn btn-block btn-light">Already have an account? Login here!</a>
+    </div>
+
+</th:block>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+            integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+            crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+
+<th:block>
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Shopping cart for
+                <th:block th:if="${session.user != null}"
+                          th:text="${session.user.getUsername()}"></th:block>
+            </h1>
+        </div>
+    </section>
+
+    <div th:if="${hasError}">
+        <h5 class="text-center text-danger" th:text="${error}"></h5>
+    </div>
+
+    <!-- Pretstavuvanje na site produkti -->
+    <div class="container mb-5">
+        <div class="row">
+            <!-- Uslov samo ako ima produkti -->
+            <div class="col-12" th:if="${products.size() > 0}">
+                <div class="table table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">Product name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Manufacturer</th>
+                            <th scope="col">Category</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Za sekoj produkt prikazi go slednoto -->
+                        <tr th:each="product : ${products}">
+                            <td th:text="${product.getName()}"></td>
+                            <td th:text="${product.getPrice()}"></td>
+                            <!-- Proverka dali postoi objekt od proizvoditel i kategorija-->
+                            <td th:text="${product.getManufacturer() != null}
+                            ? ${product.getManufacturer().getName()} : 'No Manufacturer'"></td>
+                            <td th:text="${product.getCategory() != null}
+                            ? ${product.getCategory().getName()} : 'No Category'"></td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</th:block>
+</body>
+</html>
