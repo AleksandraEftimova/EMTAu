@@ -1,9 +1,9 @@
-package webp.testau.web.servlet;
+package emt.emtau.web.servlet;
 
 //kako da se obrabotat GET i POST baranja
 
-import webp.testau.model.Category;
-import webp.testau.service.CategoryService;
+import emt.emtau.model.Category;
+import emt.emtau.service.CategoryService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

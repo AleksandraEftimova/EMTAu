@@ -1,11 +1,11 @@
-package webp.testau.web.rest;
+package emt.emtau.web.rest;
 
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import webp.testau.model.Product;
-import webp.testau.model.dto.ProductDto;
-import webp.testau.service.ProductService;
+import emt.emtau.model.Product;
+import emt.emtau.model.dto.ProductDto;
+import emt.emtau.service.ProductService;
 
 import java.util.List;
 

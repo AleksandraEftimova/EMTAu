@@ -1,4 +1,4 @@
-package webp.testau.model.dto;
+package emt.emtau.model.dto;
 
 import lombok.Data;
 

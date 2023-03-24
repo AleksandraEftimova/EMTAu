@@ -1,16 +1,17 @@
-package webp.testau.service.implementations;
+package emt.emtau.service.implementations;
 
+import emt.emtau.model.User;
+import emt.emtau.model.enumerations.Role;
+import emt.emtau.model.exceptions.InvalidUsernameOrPasswordException;
+import emt.emtau.model.exceptions.PasswordDoNotMatchException;
+import emt.emtau.model.exceptions.UsernameAlreadyExistsException;
+import emt.emtau.repository.jpa.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import webp.testau.model.User;
-import webp.testau.model.enumerations.Role;
-import webp.testau.model.exceptions.InvalidUsernameOrPasswordException;
-import webp.testau.model.exceptions.PasswordDoNotMatchException;
-import webp.testau.model.exceptions.UsernameAlreadyExistsException;
-import webp.testau.repository.jpa.UserRepository;
-import webp.testau.service.UserService;
+
+import emt.emtau.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {

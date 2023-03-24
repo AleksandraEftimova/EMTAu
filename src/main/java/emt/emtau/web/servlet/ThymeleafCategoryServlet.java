@@ -1,8 +1,8 @@
-package webp.testau.web.servlet;
+package emt.emtau.web.servlet;
 
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.spring5.SpringTemplateEngine;
-import webp.testau.service.CategoryService;
+import emt.emtau.service.CategoryService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

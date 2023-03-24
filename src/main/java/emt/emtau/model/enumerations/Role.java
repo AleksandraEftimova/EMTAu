@@ -1,4 +1,4 @@
-package webp.testau.model.enumerations;
+package emt.emtau.model.enumerations;
 
 import org.springframework.security.core.GrantedAuthority;
 

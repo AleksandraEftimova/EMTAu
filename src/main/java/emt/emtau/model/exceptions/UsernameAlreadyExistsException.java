@@ -1,4 +1,4 @@
-package webp.testau.model.exceptions;
+package emt.emtau.model.exceptions;
 
 public class UsernameAlreadyExistsException extends RuntimeException{
     public UsernameAlreadyExistsException(String username){

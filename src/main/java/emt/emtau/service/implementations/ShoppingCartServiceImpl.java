@@ -1,18 +1,18 @@
-package webp.testau.service.implementations;
+package emt.emtau.service.implementations;
 
+import emt.emtau.model.Product;
+import emt.emtau.model.ShoppingCart;
+import emt.emtau.model.User;
+import emt.emtau.model.enumerations.ShoppingCartStatus;
+import emt.emtau.model.exceptions.ProductAlreadyInShoppingCartException;
+import emt.emtau.model.exceptions.ProductNotFoundException;
+import emt.emtau.model.exceptions.ShoppingCartNotFoundException;
+import emt.emtau.model.exceptions.UserNotFoundException;
+import emt.emtau.repository.jpa.ProductRepository;
+import emt.emtau.repository.jpa.ShoppingCartRepository;
+import emt.emtau.repository.jpa.UserRepository;
 import org.springframework.stereotype.Service;
-import webp.testau.model.Product;
-import webp.testau.model.ShoppingCart;
-import webp.testau.model.User;
-import webp.testau.model.enumerations.ShoppingCartStatus;
-import webp.testau.model.exceptions.ProductAlreadyInShoppingCartException;
-import webp.testau.model.exceptions.ProductNotFoundException;
-import webp.testau.model.exceptions.ShoppingCartNotFoundException;
-import webp.testau.model.exceptions.UserNotFoundException;
-import webp.testau.repository.jpa.ProductRepository;
-import webp.testau.repository.jpa.ShoppingCartRepository;
-import webp.testau.repository.jpa.UserRepository;
-import webp.testau.service.ShoppingCartService;
+import emt.emtau.service.ShoppingCartService;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,10 +1,10 @@
-package webp.testau.service.implementations;
+package emt.emtau.service.implementations;
 
 import org.springframework.stereotype.Service;
-import webp.testau.model.Manufacturer;
-import webp.testau.repository.impl.InMemoryManufacturerRepository;
-import webp.testau.repository.jpa.ManufacturerRepository;
-import webp.testau.service.ManufacturerService;
+import emt.emtau.model.Manufacturer;
+import emt.emtau.repository.impl.InMemoryManufacturerRepository;
+import emt.emtau.repository.jpa.ManufacturerRepository;
+import emt.emtau.service.ManufacturerService;
 
 import java.util.List;
 import java.util.Optional;

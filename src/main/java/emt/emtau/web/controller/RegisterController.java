@@ -1,16 +1,17 @@
-package webp.testau.web.controller;
+package emt.emtau.web.controller;
 
+import emt.emtau.model.enumerations.Role;
+import emt.emtau.model.exceptions.InvalidUserCredentialsException;
+import emt.emtau.model.exceptions.PasswordDoNotMatchException;
+import emt.emtau.service.AuthenticationService;
+import emt.emtau.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import webp.testau.model.enumerations.Role;
-import webp.testau.model.exceptions.InvalidUserCredentialsException;
-import webp.testau.model.exceptions.PasswordDoNotMatchException;
-import webp.testau.service.AuthenticationService;
-import webp.testau.service.UserService;
+
 
 @Controller
 @RequestMapping("/register")

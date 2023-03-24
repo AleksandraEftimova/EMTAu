@@ -1,7 +1,7 @@
-package webp.testau.bootstrap;
+package emt.emtau.bootstrap;
 
 import org.springframework.stereotype.Component;
-import webp.testau.model.*;
+import emt.emtau.model.*;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;

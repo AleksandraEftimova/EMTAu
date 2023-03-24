@@ -1,8 +1,8 @@
-package webp.testau.repository.impl;
+package emt.emtau.repository.impl;
 
 import org.springframework.stereotype.Repository;
-import webp.testau.bootstrap.DataHolder;
-import webp.testau.model.Manufacturer;
+import emt.emtau.bootstrap.DataHolder;
+import emt.emtau.model.Manufacturer;
 
 import java.util.List;
 import java.util.Optional;

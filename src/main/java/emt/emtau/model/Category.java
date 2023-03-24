@@ -1,4 +1,4 @@
-package webp.testau.model;
+package emt.emtau.model;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package webp.testau.model.exceptions;
+package emt.emtau.model.exceptions;
 
 public class InvalidArgumentsException extends RuntimeException {
     public InvalidArgumentsException() {

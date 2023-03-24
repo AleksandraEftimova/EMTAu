@@ -1,11 +1,12 @@
-package webp.testau.web.controller;
+package emt.emtau.web.controller;
 
+import emt.emtau.model.ShoppingCart;
+import emt.emtau.model.User;
+import emt.emtau.service.ShoppingCartService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import webp.testau.model.ShoppingCart;
-import webp.testau.model.User;
-import webp.testau.service.ShoppingCartService;
+
 import org.springframework.security.core.Authentication;
 
 import javax.servlet.http.HttpServletRequest;

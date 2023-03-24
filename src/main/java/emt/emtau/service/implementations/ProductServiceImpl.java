@@ -1,16 +1,18 @@
-package webp.testau.service.implementations;
+package emt.emtau.service.implementations;
 
+import emt.emtau.model.Category;
+import emt.emtau.model.Manufacturer;
+import emt.emtau.model.Product;
+import emt.emtau.model.dto.ProductDto;
+import emt.emtau.model.exceptions.CategoryNotFoundException;
+import emt.emtau.model.exceptions.ManufacturerNotFoundException;
+import emt.emtau.model.exceptions.ProductNotFoundException;
+import emt.emtau.repository.jpa.CategoryRepository;
+import emt.emtau.repository.jpa.ManufacturerRepository;
+import emt.emtau.repository.jpa.ProductRepository;
 import org.springframework.stereotype.Service;
-import webp.testau.model.Category;
-import webp.testau.model.Manufacturer;
-import webp.testau.model.Product;
-import webp.testau.model.exceptions.CategoryNotFoundException;
-import webp.testau.model.exceptions.ManufacturerNotFoundException;
-import webp.testau.model.exceptions.ProductNotFoundException;
-import webp.testau.repository.jpa.CategoryRepository;
-import webp.testau.repository.jpa.ManufacturerRepository;
-import webp.testau.repository.jpa.ProductRepository;
-import webp.testau.service.ProductService;
+
+import emt.emtau.service.ProductService;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -96,5 +98,15 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteById(Long id) {
         this.productRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Product> save(ProductDto productDto) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Product> edit(Long id, ProductDto productDto) {
+        return Optional.empty();
     }
 }

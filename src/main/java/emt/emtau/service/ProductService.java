@@ -1,8 +1,8 @@
-package webp.testau.service;
+package emt.emtau.service;
 
 
-import webp.testau.model.Product;
-import webp.testau.model.dto.ProductDto;
+import emt.emtau.model.Product;
+import emt.emtau.model.dto.ProductDto;
 
 import javax.transaction.Transactional;
 import java.util.List;

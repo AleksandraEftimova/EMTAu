@@ -1,15 +1,16 @@
-package webp.testau.web.controller;
+package emt.emtau.web.controller;
 
+import emt.emtau.model.Category;
+import emt.emtau.model.Manufacturer;
+import emt.emtau.model.Product;
+import emt.emtau.service.CategoryService;
+import emt.emtau.service.ManufacturerService;
+import emt.emtau.service.ProductService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import webp.testau.model.Category;
-import webp.testau.model.Manufacturer;
-import webp.testau.model.Product;
-import webp.testau.service.CategoryService;
-import webp.testau.service.ManufacturerService;
-import webp.testau.service.ProductService;
+
 
 import java.util.List;
 

@@ -1,9 +1,9 @@
-package webp.testau.repository.jpa;
+package emt.emtau.repository.jpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import webp.testau.model.Category;
+import emt.emtau.model.Category;
 
 import java.util.List;
 

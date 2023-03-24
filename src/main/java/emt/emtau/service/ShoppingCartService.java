@@ -1,7 +1,7 @@
-package webp.testau.service;
+package emt.emtau.service;
 
-import webp.testau.model.Product;
-import webp.testau.model.ShoppingCart;
+import emt.emtau.model.Product;
+import emt.emtau.model.ShoppingCart;
 
 import java.util.List;
 

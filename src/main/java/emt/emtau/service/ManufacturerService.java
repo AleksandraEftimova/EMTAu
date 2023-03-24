@@ -1,6 +1,6 @@
-package webp.testau.service;
+package emt.emtau.service;
 
-import webp.testau.model.Manufacturer;
+import emt.emtau.model.Manufacturer;
 
 import java.util.List;
 import java.util.Optional;

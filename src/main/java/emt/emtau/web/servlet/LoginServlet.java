@@ -1,10 +1,10 @@
-package webp.testau.web.servlet;
+package emt.emtau.web.servlet;
 
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.spring5.SpringTemplateEngine;
-import webp.testau.model.User;
-import webp.testau.model.exceptions.InvalidUserCredentialsException;
-import webp.testau.service.AuthenticationService;
+import emt.emtau.model.User;
+import emt.emtau.model.exceptions.InvalidUserCredentialsException;
+import emt.emtau.service.AuthenticationService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

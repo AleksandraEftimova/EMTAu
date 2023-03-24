@@ -1,10 +1,10 @@
-package webp.testau.service.implementations;
+package emt.emtau.service.implementations;
 
 import org.springframework.stereotype.Service;
-import webp.testau.model.Category;
-import webp.testau.repository.impl.InMemoryCategoryRepository;
-import webp.testau.repository.jpa.CategoryRepository;
-import webp.testau.service.CategoryService;
+import emt.emtau.model.Category;
+import emt.emtau.repository.impl.InMemoryCategoryRepository;
+import emt.emtau.repository.jpa.CategoryRepository;
+import emt.emtau.service.CategoryService;
 
 import java.util.List;
 

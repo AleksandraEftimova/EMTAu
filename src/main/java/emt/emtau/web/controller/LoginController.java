@@ -1,13 +1,14 @@
-package webp.testau.web.controller;
+package emt.emtau.web.controller;
 
+import emt.emtau.model.User;
+import emt.emtau.model.exceptions.InvalidUserCredentialsException;
+import emt.emtau.service.AuthenticationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import webp.testau.model.User;
-import webp.testau.model.exceptions.InvalidUserCredentialsException;
-import webp.testau.service.AuthenticationService;
+
 
 import javax.servlet.http.HttpServletRequest;
 

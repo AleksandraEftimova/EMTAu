@@ -1,6 +1,6 @@
-package webp.testau.service;
+package emt.emtau.service;
 
-import webp.testau.model.User;
+import emt.emtau.model.User;
 
 public interface AuthenticationService {
 

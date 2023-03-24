@@ -1,10 +1,10 @@
-package webp.testau.repository.impl;
+package emt.emtau.repository.impl;
 
 import org.springframework.stereotype.Repository;
-import webp.testau.bootstrap.DataHolder;
-import webp.testau.model.Category;
-import webp.testau.model.Manufacturer;
-import webp.testau.model.Product;
+import emt.emtau.bootstrap.DataHolder;
+import emt.emtau.model.Category;
+import emt.emtau.model.Manufacturer;
+import emt.emtau.model.Product;
 
 import java.util.List;
 import java.util.Optional;

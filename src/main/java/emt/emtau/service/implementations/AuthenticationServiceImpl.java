@@ -1,14 +1,14 @@
-package webp.testau.service.implementations;
+package emt.emtau.service.implementations;
 
 import org.springframework.stereotype.Service;
-import webp.testau.model.User;
-import webp.testau.model.exceptions.InvalidArgumentsException;
-import webp.testau.model.exceptions.InvalidUserCredentialsException;
-import webp.testau.model.exceptions.PasswordDoNotMatchException;
-import webp.testau.model.exceptions.UsernameAlreadyExistsException;
-import webp.testau.repository.impl.InMemoryUserRepository;
-import webp.testau.repository.jpa.UserRepository;
-import webp.testau.service.AuthenticationService;
+import emt.emtau.model.User;
+import emt.emtau.model.exceptions.InvalidArgumentsException;
+import emt.emtau.model.exceptions.InvalidUserCredentialsException;
+import emt.emtau.model.exceptions.PasswordDoNotMatchException;
+import emt.emtau.model.exceptions.UsernameAlreadyExistsException;
+import emt.emtau.repository.impl.InMemoryUserRepository;
+import emt.emtau.repository.jpa.UserRepository;
+import emt.emtau.service.AuthenticationService;
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {

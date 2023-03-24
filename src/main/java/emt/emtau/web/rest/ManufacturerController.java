@@ -1,9 +1,9 @@
-package webp.testau.web.rest;
+package emt.emtau.web.rest;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import webp.testau.model.Manufacturer;
-import webp.testau.service.ManufacturerService;
+import emt.emtau.model.Manufacturer;
+import emt.emtau.service.ManufacturerService;
 
 import java.util.List;
 

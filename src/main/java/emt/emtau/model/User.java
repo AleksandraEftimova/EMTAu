@@ -1,9 +1,9 @@
-package webp.testau.model;
+package emt.emtau.model;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import webp.testau.model.enumerations.Role;
+import emt.emtau.model.enumerations.Role;
 
 import javax.persistence.*;
 import java.util.Collection;

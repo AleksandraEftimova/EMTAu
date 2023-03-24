@@ -1,9 +1,9 @@
-package webp.testau.repository.impl;
+package emt.emtau.repository.impl;
 
 import org.springframework.stereotype.Repository;
-import webp.testau.bootstrap.DataHolder;
-import webp.testau.model.ShoppingCart;
-import webp.testau.model.enumerations.ShoppingCartStatus;
+import emt.emtau.bootstrap.DataHolder;
+import emt.emtau.model.ShoppingCart;
+import emt.emtau.model.enumerations.ShoppingCartStatus;
 
 import java.util.Optional;
 

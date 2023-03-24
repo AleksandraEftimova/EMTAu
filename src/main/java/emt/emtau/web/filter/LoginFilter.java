@@ -1,7 +1,7 @@
-package webp.testau.web.filter;
+package emt.emtau.web.filter;
 
 import org.springframework.context.annotation.Profile;
-import webp.testau.model.User;
+import emt.emtau.model.User;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

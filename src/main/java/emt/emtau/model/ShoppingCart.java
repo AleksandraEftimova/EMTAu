@@ -1,7 +1,7 @@
-package webp.testau.model;
+package emt.emtau.model;
 
 import lombok.Data;
-import webp.testau.model.enumerations.ShoppingCartStatus;
+import emt.emtau.model.enumerations.ShoppingCartStatus;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

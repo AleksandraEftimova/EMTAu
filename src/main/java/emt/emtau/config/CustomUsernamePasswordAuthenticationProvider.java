@@ -1,4 +1,4 @@
-package webp.testau.config;
+package emt.emtau.config;
 
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -8,7 +8,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import webp.testau.service.UserService;
+import emt.emtau.service.UserService;
 
 @Component
 public class CustomUsernamePasswordAuthenticationProvider implements AuthenticationProvider {
