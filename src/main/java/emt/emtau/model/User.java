@@ -31,12 +31,16 @@ public class User implements UserDetails {
 //    @Column(nullable = false)
     private boolean isEnabled = true;
 
-    //ToMany=Lazy, ToOne=Eager by default
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    //To-Many=Lazy, To-One=Eager by default
+    //Eager ako e za ManyToOne ke ima za sekoe n uste n queries
+    @OneToMany(mappedBy = "user"/*, fetch = FetchType.EAGER*/)
     private List<ShoppingCart> carts;
 
     @Enumerated(value = EnumType.STRING)
     private Role role;
+
+    @ManyToOne
+    private Discount discount;
 
     public User(String username, String password, String name, String surname, Role role) {
         this.username = username;
