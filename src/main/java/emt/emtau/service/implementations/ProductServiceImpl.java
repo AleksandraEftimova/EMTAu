@@ -10,6 +10,7 @@ import emt.emtau.model.exceptions.ProductNotFoundException;
 import emt.emtau.repository.jpa.CategoryRepository;
 import emt.emtau.repository.jpa.ManufacturerRepository;
 import emt.emtau.repository.jpa.ProductRepository;
+import emt.emtau.repository.jpa.views.ProductsPerManufacturerViewRepository;
 import org.springframework.stereotype.Service;
 
 import emt.emtau.service.ProductService;
@@ -22,22 +23,17 @@ import java.util.Optional;
 public class ProductServiceImpl implements ProductService {
 
     //zavisnosti, inject the repository
-//    private final InMemoryProductRepository productRepository;
-//    private final InMemoryCategoryRepository categoryRepository;
-//    private final InMemoryManufacturerRepository manufacturerRepository;
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
     private final ManufacturerRepository manufacturerRepository;
+    private final ProductsPerManufacturerViewRepository productsPerManufacturerViewRepository;
 
-//    public ProductServiceImpl(InMemoryProductRepository productRepository, InMemoryCategoryRepository categoryRepository, InMemoryManufacturerRepository manufacturerRepository) {
-//        this.productRepository = productRepository;
-//        this.categoryRepository = categoryRepository;
-//        this.manufacturerRepository = manufacturerRepository;
-//    }
-    public ProductServiceImpl(ProductRepository productRepository, CategoryRepository categoryRepository, ManufacturerRepository manufacturerRepository) {
+
+    public ProductServiceImpl(ProductRepository productRepository, CategoryRepository categoryRepository, ManufacturerRepository manufacturerRepository, ProductsPerManufacturerViewRepository productsPerManufacturerViewRepository) {
         this.productRepository = productRepository;
         this.categoryRepository = categoryRepository;
         this.manufacturerRepository = manufacturerRepository;
+        this.productsPerManufacturerViewRepository = productsPerManufacturerViewRepository;
     }
 
     @Override
@@ -71,7 +67,10 @@ public class ProductServiceImpl implements ProductService {
         //ako ima so isto ime izbrisi
         this.productRepository.deleteByName(name);
         //ako se pomine kako sto treba togas samo gi dodavame
-        return Optional.of(this.productRepository.save(new Product(name, price, quantity, category, manufacturer)));
+        Product product = this.productRepository.save(new Product(name, price, quantity, category, manufacturer));
+        //refresh na view pri promena
+        this.refreshMaterializedView();
+        return Optional.of(product);
     }
 
     @Override
@@ -91,7 +90,9 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(() -> new ManufacturerNotFoundException(manufacturerId));
         product.setManufacturer(manufacturer);
 
-        return Optional.of(this.productRepository.save(product));
+        this.productRepository.save(product);
+        this.refreshMaterializedView();
+        return Optional.of(product);
 
     }
 
@@ -102,11 +103,41 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Optional<Product> save(ProductDto productDto) {
-        return Optional.empty();
+        Category category = this.categoryRepository.findById(productDto.getCategory())
+                .orElseThrow(() -> new CategoryNotFoundException(productDto.getCategory()));
+        Manufacturer manufacturer = this.manufacturerRepository.findById(productDto.getManufacturer())
+                .orElseThrow(() -> new ManufacturerNotFoundException(productDto.getManufacturer()));
+
+        this.productRepository.deleteByName(productDto.getName());
+        Product product = this.productRepository.save(new Product(productDto.getName(), productDto.getPrice(), productDto.getQuantity(), category, manufacturer));
+        //refresh na view pri promena
+        this.refreshMaterializedView();
+        return Optional.of(product);
     }
 
     @Override
     public Optional<Product> edit(Long id, ProductDto productDto) {
-        return Optional.empty();
+        Product product = this.productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
+
+        product.setName(productDto.getName());
+        product.setPrice(productDto.getPrice());
+        product.setQuantity(productDto.getQuantity());
+
+        Category category = this.categoryRepository.findById(productDto.getCategory())
+                .orElseThrow(() -> new CategoryNotFoundException(productDto.getCategory()));
+        product.setCategory(category);
+
+        Manufacturer manufacturer = this.manufacturerRepository.findById(productDto.getManufacturer())
+                .orElseThrow(() -> new ManufacturerNotFoundException(productDto.getManufacturer()));
+        product.setManufacturer(manufacturer);
+
+        this.productRepository.save(product);
+        this.refreshMaterializedView();
+        return Optional.of(product);
+    }
+
+    @Override
+    public void refreshMaterializedView() {
+        this.productsPerManufacturerViewRepository.refreshMaterializedView();
     }
 }

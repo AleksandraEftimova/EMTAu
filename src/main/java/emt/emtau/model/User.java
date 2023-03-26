@@ -20,8 +20,11 @@ public class User implements UserDetails {
     private String name;
     private String surname;
 
-    //default values for security methods,
-    //ponatamu koga ke rabotime so niv ke
+    //optimistic lock
+    @Version
+    private Long version;
+
+    //default values for security methods
 //    @Column(nullable = false)
     private boolean isAccountNonExpired;
 //    @Column(nullable = false)
