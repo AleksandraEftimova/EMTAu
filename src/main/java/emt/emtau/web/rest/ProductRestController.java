@@ -20,6 +20,7 @@ public class ProductRestController {
         this.productService = productService;
     }
 
+    //ne vrakjame templates tuku lista podatoci
     @GetMapping
     private List<Product> findAll(){
         return this.productService.findAll();

@@ -8,6 +8,7 @@ import emt.emtau.service.ManufacturerService;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/manufacturers")
 public class ManufacturerController {
     //dependencies

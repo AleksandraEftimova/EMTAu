@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -18,8 +19,18 @@ public class Discount {
 
     private LocalDateTime validUntil;
 
-    @OneToMany(mappedBy = "discount")
-    private List<User> user;
+//    @OneToMany(mappedBy = "discount")
+//    private List<User> user;
+
+    @ManyToMany
+    private List<User> users;
 
     public Discount() {}
+
+    //new discount with new users
+    public Discount(LocalDateTime validUntil) {
+        this.dateCreated = dateCreated;
+        this.validUntil = validUntil;
+        this.users = new ArrayList<>();
+    }
 }
