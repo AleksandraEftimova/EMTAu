@@ -4,6 +4,7 @@ import emt.emtau.model.Category;
 import emt.emtau.model.Manufacturer;
 import emt.emtau.model.Product;
 import emt.emtau.model.dto.ProductDto;
+import emt.emtau.model.event.ProductCreatedEvent;
 import emt.emtau.model.exceptions.CategoryNotFoundException;
 import emt.emtau.model.exceptions.ManufacturerNotFoundException;
 import emt.emtau.model.exceptions.ProductNotFoundException;
@@ -11,6 +12,7 @@ import emt.emtau.repository.jpa.CategoryRepository;
 import emt.emtau.repository.jpa.ManufacturerRepository;
 import emt.emtau.repository.jpa.ProductRepository;
 import emt.emtau.repository.jpa.views.ProductsPerManufacturerViewRepository;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import emt.emtau.service.ProductService;
@@ -27,13 +29,15 @@ public class ProductServiceImpl implements ProductService {
     private final CategoryRepository categoryRepository;
     private final ManufacturerRepository manufacturerRepository;
     private final ProductsPerManufacturerViewRepository productsPerManufacturerViewRepository;
+    private final ApplicationEventPublisher applicationEventPublisher;
 
 
-    public ProductServiceImpl(ProductRepository productRepository, CategoryRepository categoryRepository, ManufacturerRepository manufacturerRepository, ProductsPerManufacturerViewRepository productsPerManufacturerViewRepository) {
+    public ProductServiceImpl(ProductRepository productRepository, CategoryRepository categoryRepository, ManufacturerRepository manufacturerRepository, ProductsPerManufacturerViewRepository productsPerManufacturerViewRepository, ApplicationEventPublisher applicationEventPublisher) {
         this.productRepository = productRepository;
         this.categoryRepository = categoryRepository;
         this.manufacturerRepository = manufacturerRepository;
         this.productsPerManufacturerViewRepository = productsPerManufacturerViewRepository;
+        this.applicationEventPublisher = applicationEventPublisher;
     }
 
     @Override
@@ -69,7 +73,9 @@ public class ProductServiceImpl implements ProductService {
         //ako se pomine kako sto treba togas samo gi dodavame
         Product product = this.productRepository.save(new Product(name, price, quantity, category, manufacturer));
         //refresh na view pri promena
-        this.refreshMaterializedView();
+        //this.refreshMaterializedView();
+        //publish an event (refresh)
+        this.applicationEventPublisher.publishEvent(new ProductCreatedEvent(product));
         return Optional.of(product);
     }
 
@@ -91,7 +97,8 @@ public class ProductServiceImpl implements ProductService {
         product.setManufacturer(manufacturer);
 
         this.productRepository.save(product);
-        this.refreshMaterializedView();
+        //this.refreshMaterializedView();
+
         return Optional.of(product);
 
     }
@@ -111,7 +118,9 @@ public class ProductServiceImpl implements ProductService {
         this.productRepository.deleteByName(productDto.getName());
         Product product = this.productRepository.save(new Product(productDto.getName(), productDto.getPrice(), productDto.getQuantity(), category, manufacturer));
         //refresh na view pri promena
-        this.refreshMaterializedView();
+        //this.refreshMaterializedView();
+        //publish an event (refresh)
+        this.applicationEventPublisher.publishEvent(new ProductCreatedEvent(product));
         return Optional.of(product);
     }
 
@@ -132,7 +141,7 @@ public class ProductServiceImpl implements ProductService {
         product.setManufacturer(manufacturer);
 
         this.productRepository.save(product);
-        this.refreshMaterializedView();
+        //this.refreshMaterializedView();
         return Optional.of(product);
     }
 
