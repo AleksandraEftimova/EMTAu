@@ -3,6 +3,8 @@ package emt.emtau.web.rest;
 import emt.emtau.model.Discount;
 import emt.emtau.model.dto.DiscountDto;
 import emt.emtau.service.DiscountService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +26,11 @@ public class DiscountRestController {
     @GetMapping
     public List<Discount> findAll(){
         return this.discountService.findAll();
+    }
+
+    @GetMapping("/pagination")
+    public List<Discount> findAllWithPagination(Pageable pageable){
+        return this.discountService.findAllWithPagination(pageable).getContent();
     }
 
     /*

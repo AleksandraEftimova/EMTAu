@@ -35,7 +35,7 @@ public class DiscountServiceImpl  implements DiscountService {
     //todo
     @Override
     public Page<Discount> findAllWithPagination(Pageable pageable) {
-        return null;
+        return this.discountRepository.findAll(pageable);
     }
 
     @Override
